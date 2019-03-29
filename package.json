@@ -1,0 +1,78 @@
+{
+  "name": "oito-app",
+  "version": "0.1.0",
+  "description": "OiTO API and webapp",
+  "main": "server/index.js",
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.9.0"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "build": "vue-cli-service build",
+    "start:watch": "nodemon server/index.js",
+    "build:watch": "vue-cli-service build --watch --mode development",
+    "dev": "concurrently -n server,client \"npm run start:watch\" \"npm run build:watch\""
+  },
+  "author": "Duee Brasil <henrique.castro@dueebrasil.com.br> (http://dueebrasil.com.br)",
+  "contributors": [
+    "Renato Neto <rnato.netoo@gmail.com> (https://github.com/zRnatoNeto)"
+  ],
+  "homepage": "https://oito.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zRnatoNeto/oito-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zRnatoNeto/oito-app/issues"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.4.8",
+    "axios": "^0.18.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "change-case": "^3.1.0",
+    "connect-mongo": "^2.0.3",
+    "core-js": "^3.0.0",
+    "dotenv": "^7.0.0",
+    "es6-promise": "^4.2.6",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "helmet": "^3.16.0",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.20",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.10",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "require-dir": "^1.2.0",
+    "unsplash-js": "^5.0.0",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.2",
+    "vuetify": "^1.5.7",
+    "vuex": "^3.1.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.5.3",
+    "@vue/cli-plugin-eslint": "^3.5.1",
+    "@vue/cli-plugin-unit-jest": "^3.5.3",
+    "@vue/cli-service": "^3.5.3",
+    "@vue/eslint-config-airbnb": "^4.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.5.0",
+    "concurrently": "^4.1.0",
+    "eslint": "^5.15.3",
+    "eslint-plugin-vue": "^5.2.2",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "vue-cli-plugin-vuetify": "^0.5.0",
+    "vue-template-compiler": "^2.6.10",
+    "vuetify-loader": "^1.2.1"
+  }
+}
