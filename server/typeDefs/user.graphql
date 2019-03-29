@@ -1,0 +1,40 @@
+type Address {
+  zipcode: String
+  street: String
+  number: String
+  complement: String
+  neighborhood: String
+  city: String
+  state: String
+  country: String
+}
+
+type Avatar {
+  fileName: String
+  uri: String
+}
+
+enum Type {
+  EMPLOYER
+  EMPLOYEE
+}
+
+type User {
+  _id: String
+  name: String
+  email: String
+  password: String
+  phone: String
+  birthdate: String
+  documentNumber: String
+  description: String
+  address: Address
+  avatar: Avatar
+  type: Type
+  category: String
+  skills: [String]
+}
+
+type Query {
+  getUser(): User
+}

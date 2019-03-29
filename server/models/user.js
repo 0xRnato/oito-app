@@ -4,10 +4,13 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const UserSchema = new Schema({
+  _id: Schema.Types.ObjectId,
   name: String,
   email: String,
   password: String,
   phone: String,
+  birthdate: Date,
+  documentNumber: String,
   description: String,
   address: {
     zipcode: String,
@@ -23,11 +26,9 @@ const UserSchema = new Schema({
     fileName: String,
     uri: String,
   },
-  birthdate: Date,
-  category: String, // TODO: change to category id
-  documentNumber: String,
-  skills: [String], // TODO: change to skill id
   type: { type: String, enum: ['EMPLOYER', 'EMPLOYEE'] },
+  category: { type: Schema.Types.ObjectId, ref: 'category' },
+  skills: [{ type: Schema.Types.ObjectId, ref: 'skill' }],
 });
 
 UserSchema.pre('save', (next) => {

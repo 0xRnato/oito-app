@@ -9,11 +9,11 @@ const passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
 
 require('./config/loadEnv')();
-require('./config/passport');
 require('./models')();
+require('./config/passport');
 const Logger = require('./helpers/logger');
-const typeDefs = require('./typeDefs');
-const resolvers = require('./resolvers');
+const typeDefs = require('./typeDefs')();
+const resolvers = require('./resolvers')();
 
 const app = express();
 const logger = new Logger();
