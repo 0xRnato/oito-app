@@ -4,7 +4,7 @@
     <v-content>
       <router-view/>
     </v-content>
-    <Footer v-bind:links="links"/>
+    <Footer/>
   </v-app>
 </template>
 
@@ -18,23 +18,5 @@ export default {
     Header,
     Footer,
   },
-  data: () => ({
-    links: [
-      {
-        title: 'Oportunidades',
-        path: '/search',
-      },
-
-      {
-        title: 'Quem Somos',
-        path: '/about',
-      },
-
-      {
-        title: 'Termos de Uso',
-        path: '/terms',
-      },
-    ],
-  }),
 };
 </script>

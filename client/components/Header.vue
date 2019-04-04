@@ -14,9 +14,9 @@
       <v-btn flat>
         <router-link to="/about">Quem somos</router-link>
       </v-btn>
-      <v-btn flat>
+      <!-- <v-btn flat>
         <router-link to="/search">Oportunidades</router-link>
-      </v-btn>
+      </v-btn> -->
       <v-btn flat>
         <router-link to="/login">Entrar</router-link>
       </v-btn>

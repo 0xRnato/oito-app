@@ -21,12 +21,10 @@
       </v-container>
 
       <v-flex
-        primary
-        lighten-2
         py-3
         text-xs-center
-        white--text
         xs12
+        class="line"
       >2019 &copy; OITO CORP - CNPJ 10.140.360.0001-42 | RUA AL. JOAQUIM EUGÊNIO, 696, 17º ANDAR - JARDINS, SÃO PAULO - SP</v-flex>
     </v-layout>
   </v-footer>
@@ -35,13 +33,32 @@
 <script>
 export default {
   name: "Footer",
-
-  props: ["links"]
+  data: () => ({
+    links: [
+      {
+        title: "Oportunidades",
+        path: "/search"
+      },
+      {
+        title: "Quem Somos",
+        path: "/about"
+      },
+      {
+        title: "Termos de Uso",
+        path: "/terms"
+      }
+    ]
+  })
 };
 </script>
 
 <style scoped>
 a {
   text-decoration: none;
+  color: #6550a1;
+}
+.line {
+  background-color: #6550a1;
+  color: white;
 }
 </style>
