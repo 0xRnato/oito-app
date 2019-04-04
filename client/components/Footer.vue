@@ -40,3 +40,9 @@ export default {
   props: ["links"]
 };
 </script>
+
+<style scoped>
+  img {
+    max-height: 100px
+  }
+</style>
