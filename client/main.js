@@ -5,11 +5,11 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = true;
 
 Vue.filter('formatDate', (value) => {
   if (value) {
-    return moment(value.toString()).format('MM/DD/YYYY');
+    return moment(value.toString()).format('DD/MM/YYYY');
   }
   return null;
 });
