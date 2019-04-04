@@ -27,6 +27,7 @@ export default {
 .container {
   position: relative;
   text-align: center;
+  padding: 0;
   color: #ffffff;
 }
 .centered {
