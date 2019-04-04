@@ -1,9 +1,26 @@
 <template>
-  <v-footer height="auto" color="primary lighten-1">
-    <v-layout align-left justify-center column fill-height>
-      <v-flex>
-      <v-btn v-for="link in links" :key="link" color="white" flat round><router-link :to="link.path"/>{{link.title}}</v-btn>
-      </v-flex>
+  <v-footer height="auto" color="#f4f4f4">
+    <v-layout justify-center column fill-height>
+      <v-container fluid grid-list-sm>
+        <v-layout row>
+          <v-layout column>
+            <v-flex v-for="(link, index) in links" :key="index" xs6>
+              <v-btn color="black" flat round>
+                <router-link :to="link.path"/>
+                {{link.title}}
+              </v-btn>
+            </v-flex>
+          </v-layout>
+          <v-flex xs6>
+            <v-card dark tile flat color="#f4f4f4">
+              <router-link to="/">
+                <img src="@/assets/logo.png">
+              </router-link>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
+
       <v-flex
         primary
         lighten-2
@@ -18,8 +35,8 @@
 
 <script>
 export default {
-  name: 'Footer',
+  name: "Footer",
 
-  props: ['links'],
+  props: ["links"]
 };
 </script>

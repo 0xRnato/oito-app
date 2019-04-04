@@ -1,8 +1,9 @@
+/* eslint-disable */
 <template>
   <v-toolbar>
     <v-toolbar-title>
       <router-link to="/">
-        <img src="@/assets/logo.png" />
+        <img src="@/assets/logo.png">
       </router-link>
     </v-toolbar-title>
     <v-spacer></v-spacer>
@@ -25,7 +26,7 @@
 
 <script>
 export default {
-  name: "Header"
+  name: 'Header',
 };
 </script>
 
