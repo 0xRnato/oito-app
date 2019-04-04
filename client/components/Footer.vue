@@ -6,8 +6,7 @@
           <v-layout column>
             <v-flex v-for="(link, index) in links" :key="index" xs6>
               <v-btn color="black" flat round>
-                <router-link :to="link.path"/>
-                {{link.title}}
+                <router-link :to="link.path">{{link.title}}</router-link>
               </v-btn>
             </v-flex>
           </v-layout>
@@ -42,7 +41,7 @@ export default {
 </script>
 
 <style scoped>
-  img {
-    max-height: 100px
-  }
+a {
+  text-decoration: none;
+}
 </style>

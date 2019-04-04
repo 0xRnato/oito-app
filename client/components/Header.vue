@@ -12,13 +12,16 @@
         <router-link to="/">Home</router-link>
       </v-btn>
       <v-btn flat>
-        <router-link to="/">Quem somos</router-link>
+        <router-link to="/about">Quem somos</router-link>
       </v-btn>
       <v-btn flat>
-        <router-link to="/">Oportunidades</router-link>
+        <router-link to="/search">Oportunidades</router-link>
       </v-btn>
       <v-btn flat>
-        <router-link to="/">Entrar</router-link>
+        <router-link to="/login">Entrar</router-link>
+      </v-btn>
+      <v-btn flat>
+        <router-link to="/register">Registrar</router-link>
       </v-btn>
     </v-toolbar-items>
   </v-toolbar>
