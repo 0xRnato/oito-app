@@ -30,8 +30,59 @@
           <li>
             <p>utilizar os produtos e/ou serviços disponíveis no SITE OITO APP para fins diversos daqueles a que se destinam;</p>
           </li>
-          <li><p></p></li>
+          <li>
+            <p>enviar ou transmitir quaisquer tipos de informações que induzam, incitem ou resultem em atitudes discriminatórias, mensagens violentas ou delituosas, de conteúdo nocivo, abusivo, difamatório, pornográfico, libidinoso, ilegais, que de qualquer forma represente assédio, invasão de privacidade, risco a menores ou que atentem contra a moral e bons costumes e contrariem a ordem pública;</p>
+          </li>
+          <li>
+            <p>utilizar os dados para contato de ANUNCIANTES com outro propósito que não seja o de encaminhar proposta comercial;</p>
+          </li>
+          <li>
+            <p>cadastrar-se com informações falsas ou de propriedade de terceiros;</p>
+          </li>
+          <li>
+            <p>enviar ou transmitir qualquer tipo de informação que seja de propriedade de terceiros;</p>
+          </li>
+          <li>
+            <p>alterar, apagar ou corromper dados e informações de outros USUÁRIOS, ANUNCIANTES ou terceiros;</p>
+          </li>
+          <li>
+            <p>violar a privacidade de outros USUÁRIOS e ANUNCIANTES;</p>
+          </li>
+          <li>
+            <p>enviar ou transmitir arquivos com vírus de computador, com conteúdo destrutivo, invasivo ou que causem dano permanente ou temporário aos equipamentos do destinatário e/ou do SITE OITO APP;</p>
+          </li>
+          <li>
+            <p>utilizar endereços de computadores, de rede ou de correio eletrônico falsos;</p>
+          </li>
+          <li>
+            <p>violar propriedade intelectual (direito autoral, segredo comercial, marca, patente etc) de terceiros, por meio de qualquer tipo de reprodução de material, sem a prévia autorização do proprietário;</p>
+          </li>
+          <li>
+            <p>distribuir cópias do SITE OITO APP;</p>
+          </li>
+          <li>
+            <p>utilizar apelido que guarde semelhança com o nome do SITE OITO APP;</p>
+          </li>
+          <li>
+            <p>utilizar qualquer apelido que insinue ou sugira que os produtos ou serviços anunciados pertencem a SITE OITO APP ou que fazem parte de promoções suas;</p>
+          </li>
+          <li>
+            <p>utilizar apelidos considerados ofensivos, bem como os que contenham dados pessoais do USUÁRIO ou alguma URL ou endereço eletrônico.</p>
+          </li>
+          <li>
+            <p>utilizar propagandas enganosas que possam induzir o USUÁRIO a erro;</p>
+          </li>
+          <li>
+            <p>difamar, agredir ou injuriar outros USUÁRIOS ou ANUNCIANTES;</p>
+          </li>
+          <li>
+            <p>desrespeitar a legislação vigente.</p>
+          </li>
         </ol>
+        <p>A inobservância de qualquer dessas condições e dos termos de uso deste SITE OITO APP ensejará o cancelamento ou suspensão de seu cadastro, temporariamente ou de modo definitivo, sem prejuízo das cominações legais pertinentes.</p>
+        <h2>Política de Privacidade</h2>
+        <p>Todo o material do SITE OITO APP, quais sejam, apresentação e "layout", marcas, logotipos, produtos, sistemas, denominações de serviços e outros materiais, incluindo programas, bases de dados, imagens, arquivos ou materiais de qualquer outra espécie e que têm contratualmente autorizadas as suas inserções neste SITE OITO APP, é protegido pela legislação de Propriedade Intelectual e Direitos autorais, sendo de titularidade do SITE OITO APP. A reprodução, distribuição e transmissão de tais materiais não são permitidas sem o expresso consentimento por escrito da proprietária do SITE OITO APP ou do respectivo titular, especialmente para fim comercial ou econômico. O uso indevido de materiais protegidos por propriedade intelectual (direito autoral, marcas comerciais, patentes etc.) apresentados no SITE OITO APP será caracterizado como infração da legislação pertinente, sujeitando o infrator às ações judiciais cabíveis e dando ensejo à respectiva indenização aos prejudicados, seja ao SITE OITO APP, seja a terceiros, sem prejuízo de perdas e danos e honorários advocatícios. ANUNCIANTE e USUÁRIO possuem a prerrogativa de não aceitar a utilização de cookies pelo SITE OITO APP. Para tanto, basta desabilitá-los nas configurações de seu próprio navegador de Internet. ANUNCIANTE e USUÁRIO, desde já, autorizam o SITE OITO APP a preservar e armazenar todas as informações inseridas em seu conteúdo e a ele submetidas de qualquer forma, bem como todos os seus dados pessoais, a exemplo de endereços de e-mail, endereços de IP (Internet Protocol), informações de data e horário de acesso, entre outras informações. O USUÁRIO também autoriza o SITE OITO APP, a seus exclusivos critérios de oportunidade e conveniência, a informar e/ou divulgar estes dados em caso de exigência legal ou se forem, razoavelmente, necessárias para: (a) obedecer ao princípio do devido processo legal; (b) fazer cumprir estes Termos de Uso; (c) responder a alegações de suposta violação de direitos de terceiros e de divulgação indevida de informações para contato de terceiros e para proteger os direitos, a propriedade ou a segurança de terceiros ou do próprio SITE OITO APP e de seus ANUNCIANTES e USUÁRIOS. O SITE OITO APP coleta informações capazes de identificar os ANUNCIANTES e os USUÁRIOS de diferentes formas e em diferentes contextos de sua utilização, tais como: quando o ANUNCIANTE e o USUÁRIO se cadastram no SITE OITO APP; quando preenchem quaisquer formulários existentes no conteúdo do SITE OITO APP; quando enviam mensagens de contato; quando enviam mensagens através do chat do SITE OITO APP; quando participam de promoções ou concursos; dentre outras formas. Para cada modalidade de coleta de informações poderão ser solicitados dados diferentes, de acordo com a finalidade a que se destinam. Os ANUNCIANTES e USUÁRIOS serão sempre informados sobre quais informações estão sendo solicitadas, ficando a seu exclusivo critério fornecê-las ou não. As informações coletadas através do SITE OITO APP serão utilizadas somente pela equipe do SITE OITO APP com a única finalidade de identificar o público que o acessa e de personalizar conteúdo e serviços. Essas informações são tratadas como confidenciais e não são divulgadas a terceiros sem autorização, sem a determinação da autoridade competente ou sem que concorram quaisquer das hipóteses previstas nestes termos. Ao cadastrar-se no SITE OITO APP ou ao preencher quaisquer formulários existentes em seu conteúdo ANUNCIANTE e USUÁRIO autorizam o envio de mensagens para o e-mail ou número de celular cadastrado e obrigam-se a manter seu cadastro atualizado para que recebam as mensagens corretamente. Para que o ANUNCIANTE e o USUÁRIO possam acessar e utilizar determinados recursos tecnológicos do SITE OITO APP, pode-se exigir o seu cadastro através de Nome de Usuário e Senha. O SITE OITO APP, a empresa proprietária ou quaisquer de seus colaboradores não têm acesso à senha cadastrada. É responsabilidade exclusiva do ANUNCIANTE e do USUÁRIO guardar e proteger sua senha e garantir que o acesso seja feito somente por pessoas autorizadas. O ANUNCIANTE e o USUÁRIO declaram expressamente que são os únicos responsáveis pela administração de suas respectivas senhas, eximindo-se o SITE OITO APP de quaisquer responsabilidades pela má utilização do Nome de Usuário ou da Senha cadastrada. Recomenda-se o uso de senhas complexas, pois senhas simples são fáceis de serem quebradas ou descobertas. Quando o Anunciante ou o Usuário acessam o SITE OITO APP autorizam automaticamente a utilização de cookies. Cookies são arquivos de texto que identificam o ANUNCIANTE e o USUÁRIO e são arquivados em seus computadores para serem lidos pelo sistema de tecnologia do SITE OITO APP todas as vezes que o acessam e para acompanhar e armazenar informações sobre a navegação do ANUNCIANTE e do USUÁRIO na Internet. ANUNCIANTE e USUÁRIO desde já declaram estarem cientes que o SITE OITO APP não assume nenhuma responsabilidade em caso de roubo, perda, alteração ou uso indevido de suas informações pessoais e do Conteúdo como um todo, inclusive na hipótese de informações fornecidas a prestadores de serviços terceirizados ou a outros Anunciantes e Usuários e na hipótese de descumprimento destes Termos de Uso. Quaisquer riscos tecnológicos, como roubo, perda, alteração ou uso indevido de informações, necessidade de serviços ou reposição de material, equipamento ou informação e informações fornecidas por anunciantes, são de responsabilidade de ANUNCIANTES e USUÁRIOS. Em nenhum caso o SITE OITO APP ou sua proprietária serão responsabilizados por qualquer dano direto, indireto, incidental, especial ou como consequência de quaisquer fatos resultantes do uso do SITE OITO APP ou da inabilidade de uso deste, ou ainda por quaisquer informações, produtos ou serviços obtidos através dele ou em decorrência do seu uso.</p>
+        <p>Em caso de conflito entre estes termos de serviço e os documentos adicionais e contratos celebrados diretamente entre O SITE OITO APP e ANUNCIANTES ou USUÁRIOS, os termos adicionais e contratos diretos prevalecerão com relação a esse conflito. O descumprimento das condições de uso e política de privacidade do SITE OITO APP poderá gerar as medidas judiciais cabíveis. A inércia do SITE OITO APP em instituir tais medidas não significará renúncia de direitos. Fica eleito o foro da Comarca de São Paulo (SP), como competente para dirimir quaisquer controvérsias decorrentes deste Termo de Uso independentemente de qualquer outro, por mais privilegiado que seja.</p>
       </v-flex>
     </v-layout>
   </v-container>
