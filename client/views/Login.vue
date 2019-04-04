@@ -1,5 +1,9 @@
 <template>
-  <div>LOGIN</div>
+  <v-container fluid fill-height>
+    <v-layout justify-center align-center>
+      <v-flex text-xs-center>LOGIN</v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>

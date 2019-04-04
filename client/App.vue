@@ -22,17 +22,17 @@ export default {
     links: [
       {
         title: 'Oportunidades',
-        path: '/oportunidades',
+        path: '/search',
       },
 
       {
         title: 'Quem Somos',
-        path: '/quem-somos',
+        path: '/about',
       },
 
       {
         title: 'Termos de Uso',
-        path: '/termos-de-uso',
+        path: '/terms',
       },
     ],
   }),
