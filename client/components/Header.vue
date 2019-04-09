@@ -15,21 +15,36 @@
         <router-link to="/about">Quem somos</router-link>
       </v-btn>
       <v-btn flat>
-        <router-link to="/terms">Termos de uso</router-link>
+        <router-link to="/">Oportunidades</router-link>
       </v-btn>
-      <v-btn flat>
+      <v-btn flat v-if="!getLoggedIn">
         <router-link to="/login">Entrar</router-link>
       </v-btn>
-      <v-btn flat>
+      <v-btn flat v-if="!getLoggedIn">
         <router-link to="/register">Registrar</router-link>
       </v-btn>
+      <v-btn flat v-if="getLoggedIn">
+        <router-link to="/profile">Minha Conta</router-link>
+      </v-btn>
+      <v-btn flat v-if="getLoggedIn" @click="submit">Sair</v-btn>
     </v-toolbar-items>
   </v-toolbar>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
-  name: 'Header',
+  name: "Header",
+  methods: {
+    ...mapActions(["actionLogout"]),
+    submit() {
+      this.actionLogout();
+    }
+  },
+  computed: {
+    ...mapGetters(["getLoggedIn"])
+  }
 };
 </script>
 

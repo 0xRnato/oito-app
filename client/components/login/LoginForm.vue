@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "LoginForm",
   data() {
@@ -37,12 +39,15 @@ export default {
       email: "",
       rules: {
         required: value => !!value || "Required.",
-        min: v => v.length >= 8 || "Min 8 characters"
+        min: v => v.length >= 4 || "Min 4 characters"
       }
     };
   },
   methods: {
-    submit() {},
+    ...mapActions(["actionLogin"]),
+    submit() {
+      this.actionLogin({ email: this.email, password: this.password });
+    },
     clear() {
       this.email = "";
       this.password = "";

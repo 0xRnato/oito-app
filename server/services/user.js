@@ -1,42 +1,68 @@
-// Creates a new user account.  We first check to see if a user already exists
-// with this email address to avoid making multiple accounts with identical addresses
-// If it does not, we save the existing user.  After the user is created, it is
-// provided to the 'req.logIn' function.  This is apart of Passport JS.
-// Notice the Promise created in the second 'then' statement.  This is done
-// because Passport only supports callbacks, while GraphQL only supports promises
-// for async code!  Awkward!
-function signup({ email, password, req }) {
-  const user = new User({ email, password });
-  if (!email || !password) { throw new Error('You must provide an email and password.'); }
+const mongoose = require('mongoose');
+const crypto = require('crypto');
 
-  return User.findOne({ email })
-    .then(existingUser => {
-      if (existingUser) { throw new Error('Email in use'); }
-      return user.save();
-    })
-    .then(user => {
-      return new Promise((resolve, reject) => {
-        req.logIn(user, (err) => {
-          if (err) { reject(err); }
-          resolve(user);
-        });
-      });
-    });
+const Cache = require('../helpers/cache');
+const Response = require('../helpers/models/response');
+
+const UserModel = mongoose.model('user');
+
+const hashUser = (user) => {
+  const userData = { ...user };
+  delete userData.password;
+  const hash = crypto.createHash('sha256');
+  // eslint-disable-next-line no-underscore-dangle
+  hash.update(JSON.stringify({ _id: userData._id, email: userData.email }));
+  const accessToken = hash.digest('hex');
+  const cipher = crypto.createCipher('aes-256-cbc', process.env.CIPHER_PASSWORD);
+  let encrypted = cipher.update(JSON.stringify(userData), 'utf8', 'hex');
+  encrypted += cipher.final('hex');
+  return { accessToken, encrypted };
+};
+
+class UserService {
+  static async register(_userData) {
+    try {
+      const userData = { ..._userData };
+      const user = await UserModel.create(userData);
+      const userCache = { ...user._doc }; // eslint-disable-line no-underscore-dangle
+      const { accessToken, encrypted } = hashUser(userCache);
+      await Cache.set(accessToken, encrypted);
+      return new Response('success', { data: { accessToken } });
+    } catch (err) {
+      throw new Response('fail', err);
+    }
+  }
+
+  static async login(userData) {
+    try {
+      const { accessToken, encrypted } = hashUser(userData);
+      await Cache.set(accessToken, encrypted);
+      return new Response('success', { data: { accessToken } });
+    } catch (err) {
+      throw new Response('fail', err);
+    }
+  }
+
+  static async logout(accessToken) {
+    try {
+      await Cache.delete(accessToken);
+      return new Response('success', { data: { logout: true } });
+    } catch (err) {
+      throw new Response('fail', err);
+    }
+  }
+
+  static async update(id, data) {
+    try {
+      const user = await UserModel.findByIdAndUpdate(id, { ...data }, { new: true });
+      const userCache = { ...user._doc }; // eslint-disable-line no-underscore-dangle
+      const { accessToken, encrypted } = hashUser(userCache);
+      await Cache.set(accessToken, encrypted);
+      return new Response('success', { data: { updated: true } });
+    } catch (err) {
+      throw new Response('fail', err);
+    }
+  }
 }
 
-// Logs in a user.  This will invoke the 'local-strategy' defined above in this
-// file. Notice the strange method signature here: the 'passport.authenticate'
-// function returns a function, as its indended to be used as a middleware with
-// Express.  We have another compatibility layer here to make it work nicely with
-// GraphQL, as GraphQL always expects to see a promise for handling async code.
-function login({ email, password, req }) {
-  return new Promise((resolve, reject) => {
-    passport.authenticate('local', (err, user) => {
-      if (!user) { reject('Invalid credentials.') }
-
-      req.login(user, () => resolve(user));
-    })({ body: { email, password } });
-  });
-}
-
-module.exports = { signup, login };
+module.exports = UserService;

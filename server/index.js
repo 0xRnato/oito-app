@@ -5,39 +5,42 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
-const session = require('express-session');
 const passport = require('passport');
-const MongoStore = require('connect-mongo')(session);
 
 require('./config/loadEnv')();
 require('./models')();
 require('./config/passport');
+const Cache = require('./helpers/cache');
 const Logger = require('./helpers/logger');
 
 const app = express();
 const logger = new Logger();
+Cache.createConnection();
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useNewUrlParser', true);
+mongoose.connect(process.env.DB_CONNECTION_STRING);
 
-mongoose.connection
-  .once('open', () => logger.info('Database connected.'))
-  .on('error', error => logger.error('Error connecting to database:', error));
-process
-  .on('uncaughtException', err => logger.error(`Uncaught Exception: ${err}`))
-  .on('unhandledRejection', (reason, p) => logger.error(`Unhandled Rejection at: ${p} - reason: ${reason}`));
+const db = mongoose.connection;
+db.once('open', () => logger.info('Database connection online'));
+db.on('error', err => logger.error(`Database error: ${err}`));
+process.on('uncaughtException', err => logger.error(`Uncaught Exception: ${err}`));
+process.on('unhandledRejection', (reason, p) => logger.error(`Unhandled Rejection at: ${p} - reason: ${reason}`));
 
 if (process.env.NODE_ENV !== 'production') app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.set('trust proxy', 1);
-app.use(helmet());
 app.use(passport.initialize());
 app.use(passport.session());
+app.set('trust proxy', 1);
+app.use(helmet());
 app.use(express.static(`${__dirname}/../dist`));
 app.all('*', (req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header(
     'Access-Control-Allow-Headers',
@@ -45,17 +48,6 @@ app.all('*', (req, res, next) => {
   );
   next();
 });
-app.use(
-  session({
-    resave: true,
-    saveUninitialized: true,
-    secret: process.env.SESSION_SECRET,
-    store: new MongoStore({
-      url: process.env.MONGO_URI,
-      autoReconnect: true,
-    }),
-  }),
-);
 
 require('./routes')(app);
 

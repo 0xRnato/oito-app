@@ -4,14 +4,13 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const UserSchema = new Schema({
-  _id: Schema.Types.ObjectId,
   name: String,
-  email: String,
-  password: String,
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
   phone: String,
   birthdate: Date,
-  documentNumber: String,
-  description: String,
+  documentNumber: { type: String, required: true, unique: true },
+  bio: String,
   address: {
     zipcode: String,
     street: String,
@@ -30,7 +29,7 @@ const UserSchema = new Schema({
   skills: [{ type: Schema.Types.ObjectId, ref: 'skill' }],
 });
 
-UserSchema.pre('save', (next) => {
+UserSchema.pre('save', function cb(next) {
   const user = this;
   if (!user.isModified('password')) next();
   bcrypt.genSalt(10, (err, salt) => {
