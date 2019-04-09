@@ -26,7 +26,6 @@ const UserSchema = new Schema({
     fileName: String,
     uri: String,
   },
-  type: { type: String, enum: ['EMPLOYER', 'EMPLOYEE'] },
   category: { type: Schema.Types.ObjectId, ref: 'category' },
   skills: [{ type: Schema.Types.ObjectId, ref: 'skill' }],
 });

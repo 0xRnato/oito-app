@@ -2,19 +2,26 @@
   <v-container fluid fill-height>
     <v-layout justify-center align-center>
       <v-flex text-xs-center>
-        <RegisterForm/>
+        <h1>Crie sua conta</h1>
+        <RegisterSteps/>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-import RegisterForm from "@/components/register/RegisterForm";
+import RegisterSteps from "@/components/register/RegisterSteps";
 
 export default {
   name: "Register",
   components: {
-    RegisterForm
+    RegisterSteps
   }
 };
 </script>
+
+<style scoped>
+h1 {
+  color: #ff974f;
+}
+</style>

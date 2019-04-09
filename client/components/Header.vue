@@ -1,6 +1,6 @@
 /* eslint-disable */
 <template>
-  <v-toolbar>
+  <v-toolbar fixed style="z-index:999;">
     <v-toolbar-title>
       <router-link to="/">
         <img src="@/assets/logo.png">
@@ -14,9 +14,9 @@
       <v-btn flat>
         <router-link to="/about">Quem somos</router-link>
       </v-btn>
-      <!-- <v-btn flat>
-        <router-link to="/search">Oportunidades</router-link>
-      </v-btn> -->
+      <v-btn flat>
+        <router-link to="/terms">Termos de uso</router-link>
+      </v-btn>
       <v-btn flat>
         <router-link to="/login">Entrar</router-link>
       </v-btn>

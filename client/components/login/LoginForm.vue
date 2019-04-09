@@ -9,7 +9,6 @@
             :rules="[rules.required, rules.min]"
             label="Email"
             hint="At least 8 characters"
-            counter
           ></v-text-field>
           <v-text-field
             v-model="password"
@@ -18,11 +17,10 @@
             :type="show ? 'text' : 'password'"
             label="Senha"
             hint="At least 8 characters"
-            counter
             @click:append="show = !show"
           ></v-text-field>
-          <v-btn @click="submit">Entrar</v-btn>
-          <v-btn @click="clear">Limpar</v-btn>
+          <v-btn @click="submit" round class="btn">Entrar</v-btn>
+          <v-btn @click="clear" round class="btn">Limpar</v-btn>
         </v-flex>
       </v-layout>
     </v-container>
@@ -52,3 +50,14 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.btn {
+  color: white;
+  background-color: #6550a1 !important;
+}
+h1 {
+  color: #6550a1;
+}
+</style>
+
