@@ -17,8 +17,16 @@ export default new Vuex.Store({
     categories: [],
     skills: [],
     profileButton: true,
+    offersEmployerByUser: [],
+    offersEmployeeByUser: [],
+    offersEmployerAll: [],
+    offersEmployeeAll: [],
   },
   getters: {
+    getOffersEmployerByUser: state => state.offersEmployerByUser,
+    getOffersEmployeeByUser: state => state.offersEmployeeByUser,
+    getOffersEmployerAll: state => state.offersEmployerAll,
+    getOffersEmployeeAll: state => state.offersEmployeeAll,
     getUserData: state => state.userData,
     getLoggedIn: state => state.loggedIn,
     getRegisterStep: state => state.registerStep,
@@ -34,6 +42,34 @@ export default new Vuex.Store({
     getProfileButton: state => state.profileButton,
   },
   mutations: {
+    GET_OFFERS_EMPLOYER_USER: (state, payload) => {
+      if (payload.status === 'success') {
+        state.offersEmployerByUser = payload.data;
+      } else {
+        console.error(payload);
+      }
+    },
+    GET_OFFERS_EMPLOYEE_USER: (state, payload) => {
+      if (payload.status === 'success') {
+        state.offersEmployeeByUser = payload.data;
+      } else {
+        console.error(payload);
+      }
+    },
+    GET_OFFERS_EMPLOYER_ALL: (state, payload) => {
+      if (payload.status === 'success') {
+        state.offersEmployerAll = payload.data;
+      } else {
+        console.error(payload);
+      }
+    },
+    GET_OFFERS_EMPLOYEE_ALL: (state, payload) => {
+      if (payload.status === 'success') {
+        state.offersEmployeeAll = payload.data;
+      } else {
+        console.error(payload);
+      }
+    },
     CHANGE_PROFILE_BUTTOM: (state) => {
       state.profileButton = !state.profileButton;
     },
@@ -92,6 +128,57 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    async actionCreateOffer({ dispatch }, data) {
+      await axios({
+        method: 'post',
+        url: '/api/v1/offer',
+        headers: {
+          Authorization: `bearer ${window.$cookies.get('access_token')}`,
+        },
+        data: {
+          ...data,
+        },
+      });
+      if (data.type === 'EMPLOYER') {
+        dispatch('actionOffersEmployerByUser');
+      } else if (data.type === 'EMPLOYEE') {
+        dispatch('actionOffersEmployeeByUser');
+      }
+    },
+    async actionOffersEmployerByUser({ commit }) {
+      const response = await axios({
+        method: 'get',
+        url: '/api/v1/offer/employer',
+        headers: {
+          Authorization: `bearer ${window.$cookies.get('access_token')}`,
+        },
+      });
+      commit('GET_OFFERS_EMPLOYER_USER', response.data);
+    },
+    async actionOffersEmployeeByUser({ commit }) {
+      const response = await axios({
+        method: 'get',
+        url: '/api/v1/offer/employee',
+        headers: {
+          Authorization: `bearer ${window.$cookies.get('access_token')}`,
+        },
+      });
+      commit('GET_OFFERS_EMPLOYEE_USER', response.data);
+    },
+    async actionOffersEmployerAll({ commit }) {
+      const response = await axios({
+        method: 'get',
+        url: '/api/v1/offer/employer/all',
+      });
+      commit('GET_OFFERS_EMPLOYER_ALL', response.data);
+    },
+    async actionOffersEmployeeAll({ commit }) {
+      const response = await axios({
+        method: 'get',
+        url: '/api/v1/offer/employee/all',
+      });
+      commit('GET_OFFERS_EMPLOYEE_ALL', response.data);
+    },
     actionNextStepRegister({ commit }) {
       commit('NEXT_STEP_REGISTER');
     },
