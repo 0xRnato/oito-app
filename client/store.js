@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+import moment from 'moment';
 import { sha256 } from 'hash.js';
 import { map, find } from 'lodash';
 
@@ -22,6 +23,13 @@ export default new Vuex.Store({
     getRegisterStep: state => state.registerStep,
     getCategories: state => map(state.categories, category => category.displayName),
     getSkills: state => state.skills,
+    getCategoryName: state => categoryId => find(state.categories, ['_id', categoryId]).displayName,
+    getUserSkills: state => (userSkills) => {
+      if (!!userSkills && userSkills.length > 0 && state.skills.length > 0) {
+        return map(userSkills, _skill => find(state.skills, ['name', _skill]).displayName);
+      }
+      return [];
+    },
   },
   mutations: {
     NEXT_STEP_REGISTER: (state) => {
@@ -62,6 +70,14 @@ export default new Vuex.Store({
     GET_CATEGORIES: (state, payload) => {
       if (payload.status === 'success') {
         state.categories = payload.data;
+      } else {
+        console.error(payload);
+      }
+    },
+    GET_USER_DATA: (state, payload) => {
+      if (payload.status === 'success') {
+        state.userData = payload.data;
+        state.userData.birthdate = moment(state.userData.birthdate.toString()).format('DD/MM/YYYY');
       } else {
         console.error(payload);
       }
@@ -176,6 +192,20 @@ export default new Vuex.Store({
         skill => skill,
       );
       commit('GET_SKILLS', skills);
+    },
+    actionGetSkillsById({ commit }, categoryId) {
+      const skills = map(find(this.state.categories, ['_id', categoryId]).skills, skill => skill);
+      commit('GET_SKILLS', skills);
+    },
+    async actionGetUserData({ commit }) {
+      const response = await axios({
+        method: 'get',
+        url: '/api/v1/user',
+        headers: {
+          Authorization: `bearer ${window.$cookies.get('access_token')}`,
+        },
+      });
+      commit('GET_USER_DATA', response.data);
     },
   },
 });

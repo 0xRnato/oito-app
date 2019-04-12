@@ -9,7 +9,7 @@ module.exports = (router) => {
     passport.authenticate('bearer', async (_err, user) => {
       try {
         if (_err) throw _err;
-        const response = new Response('success', { data: { user } });
+        const response = new Response('success', { data: { ...user } });
         response.send(res);
       } catch (err) {
         handleError(err, res);
