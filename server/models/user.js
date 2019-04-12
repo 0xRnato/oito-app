@@ -3,31 +3,34 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const UserSchema = new Schema({
-  name: String,
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  phone: String,
-  birthdate: Date,
-  documentNumber: { type: String, required: true, unique: true },
-  bio: String,
-  address: {
-    zipcode: String,
-    street: String,
-    number: String,
-    complement: String,
-    neighborhood: String,
-    city: String,
-    state: String,
-    country: String,
+const UserSchema = new Schema(
+  {
+    name: String,
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    phone: String,
+    birthdate: Date,
+    documentNumber: { type: String, required: true, unique: true },
+    bio: String,
+    address: {
+      zipcode: String,
+      street: String,
+      number: String,
+      complement: String,
+      neighborhood: String,
+      city: String,
+      state: String,
+      country: String,
+    },
+    profileImage: {
+      fileName: String,
+      data: String,
+    },
+    category: { type: Schema.Types.ObjectId, ref: 'category' },
+    skills: [String],
   },
-  profileImage: {
-    fileName: String,
-    data: String,
-  },
-  category: { type: Schema.Types.ObjectId, ref: 'category' },
-  skills: [String],
-});
+  { timestamps: { createdAt: true, updatedAt: true } },
+);
 
 UserSchema.pre('save', function cb(next) {
   const user = this;
