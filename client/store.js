@@ -16,6 +16,7 @@ export default new Vuex.Store({
     registerStep: 1,
     categories: [],
     skills: [],
+    profileButton: true,
   },
   getters: {
     getUserData: state => state.userData,
@@ -30,8 +31,12 @@ export default new Vuex.Store({
       }
       return [];
     },
+    getProfileButton: state => state.profileButton,
   },
   mutations: {
+    CHANGE_PROFILE_BUTTOM: (state) => {
+      state.profileButton = !state.profileButton;
+    },
     NEXT_STEP_REGISTER: (state) => {
       state.registerStep += 1;
     },
@@ -154,6 +159,25 @@ export default new Vuex.Store({
       if (response.data.status === 'success') {
         dispatch('actionNextStepRegister');
       }
+    },
+    async actionUpdateUserProfile({ commit, dispatch }, data) {
+      const response = await axios({
+        method: 'patch',
+        url: '/api/v1/user',
+        headers: {
+          Authorization: `bearer ${window.$cookies.get('access_token')}`,
+        },
+        data: {
+          ...data,
+        },
+      });
+      if (response.data.status === 'success') {
+        dispatch('actionGetUserData');
+        commit('CHANGE_PROFILE_BUTTOM');
+      }
+    },
+    actionChangeProfileButton({ commit }) {
+      commit('CHANGE_PROFILE_BUTTOM');
     },
     async actionFinishUserRegister({ commit }, data) {
       if (data.category && data.skills && data.skills.length > 0) {
