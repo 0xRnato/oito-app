@@ -21,12 +21,12 @@ const UserSchema = new Schema({
     state: String,
     country: String,
   },
-  avatar: {
+  profileImage: {
     fileName: String,
-    uri: String,
+    data: String,
   },
   category: { type: Schema.Types.ObjectId, ref: 'category' },
-  skills: [{ type: Schema.Types.ObjectId, ref: 'skill' }],
+  skills: [String],
 });
 
 UserSchema.pre('save', function cb(next) {

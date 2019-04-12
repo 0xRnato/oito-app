@@ -1,4 +1,3 @@
-/* eslint-disable */
 <template>
   <v-toolbar fixed style="z-index:999;">
     <v-toolbar-title>

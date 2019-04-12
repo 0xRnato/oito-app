@@ -1,15 +1,15 @@
 <template>
-  <v-stepper v-model="e1">
+  <v-stepper :value="getRegisterStep">
     <v-stepper-header>
-      <v-stepper-step :complete="e1 > 1" step="1">
+      <v-stepper-step :complete="getRegisterStep > 1" step="1">
         <span class="stepper">Dados da Conta</span>
       </v-stepper-step>
       <v-divider></v-divider>
-      <v-stepper-step :complete="e1 > 2" step="2">
+      <v-stepper-step :complete="getRegisterStep > 2" step="2">
         <span class="stepper">Dados da pessoais</span>
       </v-stepper-step>
       <v-divider></v-divider>
-      <v-stepper-step :complete="e1 > 3" step="3">
+      <v-stepper-step :complete="getRegisterStep > 3" step="3">
         <span class="stepper">Endereço</span>
       </v-stepper-step>
       <v-divider></v-divider>
@@ -21,25 +21,22 @@
     <v-stepper-items>
       <v-stepper-content step="1">
         <Step1/>
-        <v-btn class="btn" flat round large @click="e1 = 2">Continue</v-btn>
       </v-stepper-content>
       <v-stepper-content step="2">
         <Step2/>
-        <v-btn class="btn" flat round large @click="e1 = 3">Continue</v-btn>
       </v-stepper-content>
       <v-stepper-content step="3">
         <Step3/>
-        <v-btn class="btn" flat round large @click="e1 = 4">Continue</v-btn>
       </v-stepper-content>
       <v-stepper-content step="4">
         <Step4/>
-        <v-btn class="btn" flat round large @click="e1 = 1">Continue</v-btn>
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Step1 from "@/components/register/Step1.vue";
 import Step2 from "@/components/register/Step2.vue";
 import Step3 from "@/components/register/Step3.vue";
@@ -53,18 +50,8 @@ export default {
     Step3,
     Step4
   },
-  data() {
-    return {
-      show: false,
-      e1: 0,
-      rules: {
-        required: value => !!value || "Required."
-      }
-    };
-  },
-  methods: {
-    submit() {},
-    clear() {}
+  computed: {
+    ...mapGetters(["getRegisterStep"]),
   }
 };
 </script>
@@ -72,9 +59,5 @@ export default {
 <style scoped>
 .stepper {
   color: #ff974f;
-}
-.btn {
-  background-color: #6550a1;
-  color: white;
 }
 </style>

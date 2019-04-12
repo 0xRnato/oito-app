@@ -3,7 +3,6 @@ const passport = require('passport');
 const UserService = require('../services/user');
 const handleError = require('../helpers/handleError');
 const Response = require('../helpers/models/response');
-const ErrorMessage = require('../helpers/models/errorMessage');
 
 module.exports = (router) => {
   router.get('/', (req, res, next) => {
@@ -31,15 +30,10 @@ module.exports = (router) => {
     })(req, res, next);
   });
 
-  router.post('/register', async (req, res) => {
+  router.post('/', async (req, res) => {
     try {
-      if (!req.headers.authorization || req.headers.authorization !== process.env.API_KEY) {
-        const response = new Response('fail', new ErrorMessage('withoutCredentials'));
-        response.send(res);
-      } else {
-        const response = await UserService.register(req.body);
-        response.send(res);
-      }
+      const response = await UserService.register(req.body);
+      response.send(res);
     } catch (err) {
       handleError(err, res);
     }

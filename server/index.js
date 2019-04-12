@@ -31,7 +31,7 @@ process.on('unhandledRejection', (reason, p) => logger.error(`Unhandled Rejectio
 if (process.env.NODE_ENV !== 'production') app.use(morgan('dev'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb' }));
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());

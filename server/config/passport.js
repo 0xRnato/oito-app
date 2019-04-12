@@ -24,7 +24,6 @@ passport.deserializeUser(async (_id, done) => {
   try {
     const user = await UserModel.findById(_id)
       .populate('category')
-      .populate('skills')
       .exec();
     const userData = { ...user._doc }; // eslint-disable-line no-underscore-dangle
     delete userData.password;
@@ -39,7 +38,6 @@ passport.use(
     try {
       const userData = await UserModel.findOne({ email })
         .populate('category')
-        .populate('skills')
         .exec();
       // eslint-disable-next-line no-underscore-dangle
       if (!userData || !userData._doc) {
