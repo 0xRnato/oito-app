@@ -1,7 +1,10 @@
 <template>
   <v-container column text-xs-center>
     <v-layout row>
-      <v-flex md3 sm12 v-for="(offer, index) in getOffersEmployeeAll" :key="index">
+      <v-text-field v-model="search" label="Pesquisar" md10></v-text-field>
+    </v-layout>
+    <v-layout row>
+      <v-flex md3 sm12 v-for="(offer, index) in filteredItems" :key="index">
         <v-card>
           <v-img class="white--text img-profile" :src="offer.user.profileImage"></v-img>
           <v-container fill-height fluid>
@@ -35,8 +38,30 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Tab2",
+  data() {
+    return {
+      search: ""
+    };
+  },
   computed: {
-    ...mapGetters(["getOffersEmployeeAll", "getUserSkills"])
+    ...mapGetters(["getOffersEmployeeAll", "getUserSkills"]),
+    filteredItems() {
+      return this.getOffersEmployeeAll.filter(item => {
+        return (
+          item.user.name.toLowerCase().indexOf(this.search.toLowerCase()) >
+            -1 ||
+          item.user.address.city
+            .toLowerCase()
+            .indexOf(this.search.toLowerCase()) > -1 ||
+          item.user.address.state
+            .toLowerCase()
+            .indexOf(this.search.toLowerCase()) > -1 ||
+          item.user.address.country
+            .toLowerCase()
+            .indexOf(this.search.toLowerCase()) > -1
+        );
+      });
+    }
   },
   methods: {
     ...mapActions(["actionOffersEmployeeAll"])
