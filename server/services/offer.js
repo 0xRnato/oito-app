@@ -20,11 +20,13 @@ class OfferService {
     try {
       const offers = await OfferModel.find({ type: 'EMPLOYER' }).populate('userId');
       const result = _.map(offers, offer => ({
+        id: offer._id, // eslint-disable-line no-underscore-dangle
         title: offer.title,
         description: offer.description,
         value: offer.value,
         deadline: offer.deadline,
         user: {
+          id: offer.userId._id, // eslint-disable-line no-underscore-dangle
           name: offer.userId.name,
           bio: offer.userId.bio,
           address: {
@@ -48,11 +50,13 @@ class OfferService {
       const offers = await OfferModel.find({ type: 'EMPLOYEE' })
         .populate('userId');
       const result = _.map(offers, offer => ({
+        id: offer._id, // eslint-disable-line no-underscore-dangle
         title: offer.title,
         description: offer.description,
         value: offer.value,
         deadline: offer.deadline,
         user: {
+          id: offer.userId._id, // eslint-disable-line no-underscore-dangle
           name: offer.userId.name,
           bio: offer.userId.bio,
           address: {

@@ -21,8 +21,10 @@ export default new Vuex.Store({
     offersEmployeeByUser: [],
     offersEmployerAll: [],
     offersEmployeeAll: [],
+    proposes: [],
   },
   getters: {
+    getProposes: state => state.proposes,
     getOffersEmployerByUser: state => state.offersEmployerByUser,
     getOffersEmployeeByUser: state => state.offersEmployeeByUser,
     getOffersEmployerAll: state => state.offersEmployerAll,
@@ -125,6 +127,13 @@ export default new Vuex.Store({
     },
     GET_SKILLS: (state, payload) => {
       state.skills = payload;
+    },
+    GET_PROPOSE: (state, payload) => {
+      if (payload.status === 'success') {
+        state.proposes = payload.data;
+      } else {
+        console.error(payload);
+      }
     },
   },
   actions: {
@@ -317,6 +326,26 @@ export default new Vuex.Store({
         },
       });
       commit('GET_USER_DATA', response.data);
+    },
+    async actionCreatePropose({ commit }, data) {
+      await axios({
+        method: 'post',
+        url: '/api/v1/propose',
+        headers: {
+          Authorization: `bearer ${window.$cookies.get('access_token')}`,
+        },
+        data,
+      });
+    },
+    async actionGetPropose({ commit }) {
+      const response = await axios({
+        method: 'get',
+        url: '/api/v1/propose',
+        headers: {
+          Authorization: `bearer ${window.$cookies.get('access_token')}`,
+        },
+      });
+      commit('GET_PROPOSE', response.data);
     },
   },
 });

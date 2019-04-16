@@ -25,11 +25,66 @@
             </v-flex>
           </v-card-title>
           <v-card-actions>
-            <v-icon class="icon-profile">info</v-icon>
+            <v-btn class="btn" flat round @click="selectUser(offer)">
+              <v-icon class="icon-profile">info</v-icon>Info
+            </v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
     </v-layout>
+    <v-dialog max-width="600px" v-model="dialog">
+      <v-card>
+        <v-card-title>
+          <v-flex md2>
+            <img
+              class="img-profile"
+              v-if="selectedOffer.user && selectedOffer.user.profileImage"
+              v-bind:src="selectedOffer.user.profileImage"
+            >
+          </v-flex>
+          <v-flex md10 style="padding-left: 20px;">
+            <h1>{{selectedOffer.user.name}}</h1>
+            <div
+              v-if="selectedOffer.user && selectedOffer.user.address && selectedOffer.user.address.city && selectedOffer.user.address.state && selectedOffer.user.address.country"
+            >
+              <v-icon class="icon-profile">location_on</v-icon>
+              <span>{{selectedOffer.user.address.city}} - {{selectedOffer.user.address.state}} / {{selectedOffer.user.address.country}}</span>
+            </div>
+          </v-flex>
+        </v-card-title>
+        <v-card-text>
+          <v-container grid-list-md>
+            <v-layout wrap>
+              <v-flex md7>
+                <v-text-field label="Titulo" disabled :value="selectedOffer.title"></v-text-field>
+              </v-flex>
+              <v-spacer></v-spacer>
+              <v-flex md2>
+                <v-text-field label="Valor" disabled :value="selectedOffer.value"></v-text-field>
+              </v-flex>
+              <v-spacer></v-spacer>
+              <v-flex md2>
+                <v-text-field label="Prazo" hint="dias" disabled :value="selectedOffer.deadline"></v-text-field>
+              </v-flex>
+              <v-flex md12>
+                <v-textarea label="Descrição" disabled :value="selectedOffer.description"></v-textarea>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            class="btn"
+            flat
+            round
+            large
+            @click="submit"
+            style="margin-right: 20px;margin-bottom: 20px;"
+          >Negociar</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -40,7 +95,22 @@ export default {
   name: "Tab1",
   data() {
     return {
-      search: ""
+      search: "",
+      dialog: false,
+      selectedOffer: {
+        title: "",
+        value: "",
+        deadline: "",
+        description: "",
+        user: {
+          id: "",
+          address: {},
+          bio: "",
+          category: "",
+          profileImage: "",
+          skills: []
+        }
+      }
     };
   },
   computed: {
@@ -64,7 +134,18 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["actionOffersEmployerAll"])
+    ...mapActions(["actionOffersEmployerAll", "actionCreatePropose"]),
+    selectUser(offer) {
+      this.dialog = true;
+      this.selectedOffer = offer;
+    },
+    submit() {
+      this.actionCreatePropose({
+        to: this.selectedOffer.user.id,
+        offerId: this.selectedOffer.id
+      });
+      this.dialog = false;
+    }
   },
   created() {
     this.actionOffersEmployerAll();
@@ -85,11 +166,11 @@ h2 {
 .btn {
   background-color: #6550a1;
   color: white;
+  margin: 0 auto;
 }
 .icon-profile {
-  color: #6550a1;
-  margin: 0 auto;
-  font-size: 60px;
+  color: #ff974f;
+  margin-right: 10px;
 }
 .img-profile {
   width: 100px;

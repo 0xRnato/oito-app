@@ -4,13 +4,16 @@ const { Schema } = mongoose;
 
 const ProposeSchema = new Schema(
   {
-    title: String,
-    description: String,
+    offerId: { type: Schema.Types.ObjectId, ref: 'offer' },
     from: { type: Schema.Types.ObjectId, ref: 'user' },
     to: { type: Schema.Types.ObjectId, ref: 'user' },
-    value: Number,
-    startDate: Date,
-    endDate: Date,
+    messages: [
+      {
+        from: { type: Schema.Types.ObjectId, ref: 'user' },
+        to: { type: Schema.Types.ObjectId, ref: 'user' },
+        text: String,
+      },
+    ],
   },
   { timestamps: { createdAt: true, updatedAt: true } },
 );
